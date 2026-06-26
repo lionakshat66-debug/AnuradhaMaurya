@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuradha Maurya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Constant background color shifts */
+            background: linear-gradient(-45deg, #8e2de2, #4a00e0, #6a11cb, #dd2476);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        /* Continuous Animations */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes continuousFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes autoTextGlow {
+            0% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)); transform: scale(1.02); }
+            100% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.4)); transform: scale(1); }
+        }
+        @keyframes borderColorShift {
+            0% { border-color: #ff512f; box-shadow: 0 10px 30px rgba(255, 81, 47, 0.5); }
+            50% { border-color: #dd2476; box-shadow: 0 10px 30px rgba(221, 36, 118, 0.8); }
+            100% { border-color: #ff512f; box-shadow: 0 10px 30px rgba(255, 81, 47, 0.5); }
+        }
+        @keyframes autoLineStretch {
+            0% { width: 10%; background: #ff512f; }
+            50% { width: 100%; background: #dd2476; }
+            100% { width: 10%; background: #ff512f; }
+        }
+        @keyframes buttonColorFlow {
+            0% { background-position: 0% 50%; transform: scale(1); box-shadow: 0 5px 20px rgba(255,0,0,.4); }
+            50% { background-position: 100% 50%; transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,68,0,.8); }
+            100% { background-position: 0% 50%; transform: scale(1); box-shadow: 0 5px 20px rgba(255,0,0,.4); }
+        }
+        @keyframes autoMobileGlowMovement {
+            0% { left: 10%; top: 20%; }
+            25% { left: 80%; top: 40%; }
+            50% { left: 30%; top: 80%; }
+            75% { left: 90%; top: 60%; }
+            100% { left: 10%; top: 20%; }
+        }
+
+        /* Background Ambient Glow (Works without mouse) */
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            /* Fallback automatic wandering movement if there is no cursor interaction (like mobile screens) */
+            animation: autoMobileGlowMovement 12s ease-in-out infinite;
+        }
+
+        /* Header Layout */
+        .header {
+            text-align: center;
+            color: white;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            padding: 35px;
+            font-size: 55px;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            /* Constantly glows and pulses text style on its own */
+            animation: fadeInUp 0.8s ease-out forwards, autoTextGlow 3s ease-in-out infinite;
+        }
+
+        /* Card Container layout */
+        .about {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            /* Floats automatically on both desktop and mobile layouts */
+            animation: fadeInUp 1s ease-out 0.2s backwards, continuousFloat 5s ease-in-out infinite;
+        }
+
+        /* Main Information Blocks */
+        .info {
+            flex: 1;
+        }
+        .info h2 {
+            color: white;
+            font-size: 40px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        /* Line under header that grows and changes colors by itself */
+        .info h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 4px;
+            border-radius: 2px;
+            animation: autoLineStretch 4s ease-in-out infinite;
+        }
+        .info p {
+            color: white;
+            font-size: 22px;
+            line-height: 1.8;
+        }
+
+        /* Image Display Box */
+        .profile-img {
+            width: 320px;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 25px;
+            border: 5px solid #ff512f;
+            /* Cycles border colors and shadow glows on its own */
+            animation: borderColorShift 4s linear infinite;
+        }
+
+        /* Redirect Channel Action Button */
+        .yt-btn {
+            display: block;
+            width: fit-content;
+            margin: 40px auto 70px;
+            padding: 16px 35px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ff0000, #ff512f, #ff7b00, #ff0000);
+            background-size: 300% 100%;
+            /* Constantly pulses sizes and cycles gradient colors automatically */
+            animation: fadeInUp 1s ease-out 0.4s backwards, buttonColorFlow 3s ease-in-out infinite;
+        }
+
+        /* Mobile Adjustments (Forces layout style to match matching animations) */
+        @media(max-width:850px){
+            .about {
+                flex-direction: column-reverse;
+                text-align: center;
+                margin: 40px 20px;
+                gap: 30px;
+            }
+            .profile-img {
+                width: 250px;
+                height: 330px;
+            }
+            .header {
+                font-size: 35px;
+                padding: 25px 15px;
+            }
+            .info h2 {
+                font-size: 30px;
+            }
+            .info p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow" id="glow"></div>
+    <h1 class="header">🌸 Anuradha Maurya 🌸</h1>
+    
+    <div class="about">
+        <div class="info">
+            <h2>About</h2>
+            <p><strong>🎂 Birthday:</strong> 12 March 1992</p>
+            <p><strong>👤 Name:</strong> Anuradha Maurya</p>
+            <p><strong>♀ Gender:</strong> Female</p>
+            <p><strong>🎓 Education:</strong> MSc in Botany</p>
+            <p><strong>📞 Phone:</strong> 8858606901</p>
+            <p>🍲 Passionate cook and creator of a YouTube channel featuring delicious recipes and cooking ideas.</p>
+        </div>
+        <img src="Aunradha.png" class="profile-img" alt="Anuradha Maurya">
+    </div>
+
+    <a class="yt-btn" href="https://youtube.com" target="_blank">▶ Visit YouTube Channel</a>
+
+    <script>
+        const glow = document.getElementById("glow");
+        
+        // Desktop support: If a mouse moves, override the mobile automatic drifting style to follow the exact cursor path 
+        document.addEventListener("mousemove", (e) => {
+            glow.style.animation = "none"; // turns off automated float loop
+            glow.style.left = e.clientX + "px";
+            glow.style.top = e.clientY + "px";
+        });
+    </script>
+</body>
+</html>
